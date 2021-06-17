@@ -1,0 +1,25 @@
+### GET All cards
+GET http://localhost:5000/cards/
+Accept: application/json
+
+### POST Create new card
+POST http://localhost:5000/cards/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "card",
+  "link": "http://example.com/card-image.jpg"
+}
+
+### DELETE Delete card
+DELETE http://localhost:5000/cards/60abb1bdcc64644894d33f09
+Accept: application/json
+
+### PUT Set like
+PUT http://localhost:5000/cards/60a96d9bcca3e93a14c4dd41/likes
+Accept: application/json
+
+### DELETE Remove like
+DELETE http://localhost:5000/cards/60a96d9bcca3e93a14c4dd41/likes
+Accept: application/json
