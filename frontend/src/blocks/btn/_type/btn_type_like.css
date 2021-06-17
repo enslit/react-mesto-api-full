@@ -1,0 +1,11 @@
+.btn_type_like {
+    height: 20px;
+    width: 20px;
+    border: none;
+    outline: none;
+    background-image: url(../../../images/like.svg);
+}
+
+.btn_type_like:active {
+    background-image: url(../../../images/like_active.svg);
+}

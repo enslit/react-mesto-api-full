@@ -1,0 +1,9 @@
+.page-404__title {
+    font-size: 72px;
+}
+
+@media screen and (max-width: 441px) {
+    .page-404__title {
+        font-size: 48px;
+    }
+}

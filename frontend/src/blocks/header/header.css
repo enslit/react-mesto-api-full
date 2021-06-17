@@ -1,0 +1,21 @@
+.header {
+    grid-area: header;
+    padding-top: 45px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 441px) {
+    .header {
+        padding-bottom: 26px;
+        position: relative;
+        transition: padding-top 200ms ease-in-out;
+    }
+
+    .header_menu-opened {
+        padding-top: 165px;
+    }
+}

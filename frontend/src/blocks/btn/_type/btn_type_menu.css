@@ -1,0 +1,15 @@
+.btn_type_menu {
+    display: none;
+    height: 21px;
+    width: 24px;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media screen and (max-width: 441px) {
+    .btn_type_menu {
+        display: inline-block;
+    }
+}

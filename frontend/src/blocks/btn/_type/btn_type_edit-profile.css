@@ -1,0 +1,13 @@
+.btn_type_edit-profile {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    background-image: url(../../../images/pen.svg);
+}
+
+@media screen and (max-width: 767px) {
+    .btn_type_edit-profile {
+        height: 18px;
+        width: 18px;
+    }
+}

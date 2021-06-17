@@ -1,0 +1,8 @@
+.popup__icon {
+    height: 120px;
+    width: 120px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 40px auto;
+}

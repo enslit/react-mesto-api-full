@@ -1,0 +1,6 @@
+.form__error {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+}

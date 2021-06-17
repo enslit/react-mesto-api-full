@@ -1,0 +1,25 @@
+.profile__avatar-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile__avatar-wrapper::after {
+    content: url("../../../images/pencil.svg");
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+}
+
+.profile__avatar-wrapper:hover::after {
+    opacity: 1;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .8);
+}

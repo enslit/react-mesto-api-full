@@ -1,0 +1,14 @@
+.btn {
+    color: #fff;
+    box-sizing: border-box;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity 200ms ease-in;
+    flex-shrink: 0;
+}
+
+.btn:hover {
+    opacity: 0.6;
+}

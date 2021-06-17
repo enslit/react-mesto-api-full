@@ -1,0 +1,10 @@
+.form__after-save {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -32px;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #fff;
+}

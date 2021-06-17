@@ -1,0 +1,10 @@
+.page-404__text {
+    font-size: 28px;
+    text-align: center;
+}
+
+@media screen and (max-width: 441px) {
+    .page-404__text {
+        font-size: 24px;
+    }
+}
