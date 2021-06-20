@@ -8,7 +8,7 @@ require('dotenv').config();
 const { Joi, celebrate, Segments, errors } = require('celebrate');
 const auth = require('./middlewares/auth');
 const clientErrorHandler = require('./middlewares/clientErrorHandler');
-const { NotFountError } = require('./utils/httpErrors');
+const { NotFoundError } = require('./utils/httpErrors');
 const { createUser, login } = require('./controllers/users');
 
 const {
@@ -62,7 +62,7 @@ app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
 
 app.use(() => {
-  throw new NotFountError('Запрашиваемый ресурс не найден');
+  throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
 
 app.use(errorLogger);
