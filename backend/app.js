@@ -7,7 +7,6 @@ const helmet = require('helmet');
 require('dotenv').config();
 const { Joi, celebrate, Segments, errors } = require('celebrate');
 const auth = require('./middlewares/auth');
-const errorLogger = require('./middlewares/errorLogger');
 const clientErrorHandler = require('./middlewares/clientErrorHandler');
 const { NotFountError } = require('./utils/httpErrors');
 const { createUser, login } = require('./controllers/users');
@@ -30,6 +29,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(limiter);
 app.use(helmet());
+app.use(requestLogger);
 
 app.post(
   '/signin',
@@ -65,8 +65,8 @@ app.use(() => {
   throw new NotFountError('Запрашиваемый ресурс не найден');
 });
 
-app.use(errors());
 app.use(errorLogger);
+app.use(errors());
 app.use(clientErrorHandler);
 
 mongoose
