@@ -49,7 +49,7 @@ module.exports.createUser = async (req, res, next) => {
 
 module.exports.updateProfile = (req, res, next) => {
   const { name, about } = req.body;
-  return User.findByIdAndUpdate(req.user, { name, about })
+  return User.findByIdAndUpdate(req.user, { name, about }, { new: true })
     .then((updatedUser) => {
       if (!updatedUser) {
         throw new Error('Что-то пошло не так. Пользователь не обновлен');
@@ -61,7 +61,7 @@ module.exports.updateProfile = (req, res, next) => {
 };
 
 module.exports.updateAvatar = (req, res, next) =>
-  User.findByIdAndUpdate(req.user, { avatar: req.body.avatar })
+  User.findByIdAndUpdate(req.user, { avatar: req.body.avatar }, { new: true })
     .then((updatedUser) => res.json(updatedUser))
     .catch(next);
 
