@@ -65,7 +65,7 @@ module.exports.updateAvatar = (req, res, next) =>
     .then((updatedUser) => res.json(updatedUser))
     .catch(next);
 
-module.exports.login = (req, res, next) =>
+module.exports.login = (req, res, next) => 
   User.findUserByCredentials(req.body.email, req.body.password)
     .then((user) => {
       const JWT_SECRET =
@@ -79,9 +79,11 @@ module.exports.login = (req, res, next) =>
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "none",
+	secure: true,
       });
 
       return res.json({ token });
     })
     .catch(next);
+
