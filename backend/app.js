@@ -4,8 +4,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-require('dotenv').config();
 const { Joi, celebrate, Segments, errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+require('dotenv').config();
 const auth = require('./middlewares/auth');
 const clientErrorHandler = require('./middlewares/clientErrorHandler');
 const { NotFoundError } = require('./utils/httpErrors');
@@ -32,7 +33,7 @@ app.use(helmet());
 app.use(requestLogger);
 
 app.post(
-  '/signin',
+  '/api/signin',
   celebrate({
     [Segments.BODY]: Joi.object().keys({
       email: Joi.string().required().email(),
@@ -43,7 +44,7 @@ app.post(
 );
 
 app.post(
-  '/signup',
+  '/api/signup',
   celebrate({
     [Segments.BODY]: Joi.object().keys({
       email: Joi.string().required().email(),
@@ -58,8 +59,8 @@ app.post(
   createUser
 );
 
-app.use('/users', auth, require('./routes/users'));
-app.use('/cards', auth, require('./routes/cards'));
+app.use('/api/users', auth, require('./routes/users'));
+app.use('/api/cards', auth, require('./routes/cards'));
 
 app.use(() => {
   throw new NotFoundError('Запрашиваемый ресурс не найден');
