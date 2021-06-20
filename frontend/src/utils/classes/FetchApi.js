@@ -9,6 +9,7 @@ export class FetchApi {
     const options = {
       method,
       headers: Object.assign(this._headers, additionalHeaders),
+      credentials: 'include',
     };
 
     if (body) {

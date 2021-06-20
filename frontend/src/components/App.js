@@ -234,7 +234,7 @@ function App() {
         .then(([userData, cardList]) => {
           setCurrentUser((user) => ({
             ...user,
-            ...userData,
+            ...userData.data,
           }));
           setCards(cardList);
         })

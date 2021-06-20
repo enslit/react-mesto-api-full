@@ -15,7 +15,7 @@ module.exports.getUserProfile = (req, res, next) =>
         throw new NotFoundError('Пользователь не найден');
       }
 
-      return res.json(user);
+      return res.json({ data: user });
     })
     .catch(next);
 
@@ -41,7 +41,9 @@ module.exports.createUser = async (req, res, next) => {
         avatar,
       })
     )
-    .then(() => res.status(201).json({ message: 'Пользователь создан' }))
+    .then((user) =>
+      res.status(201).json({ data: { _id: user._id, email: user.email } })
+    )
     .catch(next);
 };
 
@@ -76,6 +78,6 @@ module.exports.login = (req, res, next) =>
         httpOnly: true,
       });
 
-      return res.json({ message: 'Authorized' });
+      return res.json({ token });
     })
     .catch(next);

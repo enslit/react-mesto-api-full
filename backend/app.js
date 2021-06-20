@@ -28,10 +28,11 @@ const limiter = rateLimit({
 app.use(
   cors({
     origin: [
-      'http://localhost',
+      'http://localhost:3000',
       'http://enslit.nomoredomains.monster',
       'https://enslit.nomoredomains.monster',
     ],
+    credentials: true,
   })
 );
 app.use(express.json());
