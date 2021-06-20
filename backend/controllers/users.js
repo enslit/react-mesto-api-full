@@ -68,7 +68,10 @@ module.exports.updateAvatar = (req, res, next) =>
 module.exports.login = (req, res, next) =>
   User.findUserByCredentials(req.body.email, req.body.password)
     .then((user) => {
-      const { JWT_SECRET = 'dev-key' } = process.env;
+      const JWT_SECRET =
+        process.env.NODE_ENV !== 'production'
+          ? 'dev-key'
+          : process.env.JWT_SECRET;
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: '7d',
       });
