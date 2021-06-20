@@ -25,7 +25,15 @@ const limiter = rateLimit({
   max: 50,
 });
 
-app.use(cors({ origin: 'http://localhost' }));
+app.use(
+  cors({
+    origin: [
+      'http://localhost',
+      'http://enslit.nomoredomains.monster',
+      'https://enslit.nomoredomains.monster',
+    ],
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(limiter);
