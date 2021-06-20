@@ -4,6 +4,8 @@ const ForbiddenError = require('../utils/httpErrors/ForbiddenError');
 
 module.exports.getCards = (req, res, next) =>
   Cards.find({})
+    .populate('owner')
+    .populate('likes')
     .then((cards) => res.json(cards))
     .catch(next);
 
@@ -28,7 +30,10 @@ module.exports.deleteCard = (req, res, next) =>
 
 module.exports.createCard = (req, res, next) =>
   Cards.create({ name: req.body.name, link: req.body.link, owner: req.user })
-    .then((card) => res.status(201).json(card))
+    .then((card) => card.populate('owner').populate('likes').execPopulate())
+    .then((cardWithPopulate) =>
+      res.status(201).json({ ...cardWithPopulate._doc })
+    )
     .catch(next);
 
 module.exports.likeCard = (req, res, next) =>
@@ -37,6 +42,8 @@ module.exports.likeCard = (req, res, next) =>
     { $addToSet: { likes: req.user } },
     { new: true }
   )
+    .populate('likes')
+    .populate('owner')
     .exec()
     .then((card) => {
       if (!card) {
@@ -55,6 +62,8 @@ module.exports.dislikeCard = (req, res, next) =>
     { $pull: { likes: req.user } },
     { new: true }
   )
+    .populate('likes')
+    .populate('owner')
     .exec()
     .then((card) => {
       if (!card) {

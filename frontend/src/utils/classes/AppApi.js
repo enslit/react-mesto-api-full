@@ -22,7 +22,7 @@ export class AppApi extends FetchApi {
   }
 
   like(id, like = true) {
-    return this._fetch(`cards/likes/${id}`, like ? 'PUT' : 'DELETE');
+    return this._fetch(`cards/${id}/likes`, like ? 'PUT' : 'DELETE');
   }
 
   updateAvatar(data) {
