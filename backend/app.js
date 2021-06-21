@@ -37,9 +37,9 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
